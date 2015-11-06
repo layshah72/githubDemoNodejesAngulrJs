@@ -31,7 +31,7 @@ var app = express()
 	app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.set('port', (3000||process.env.PORT));
+app.set('port', (process.env.OPENSHIFT_NODEJS_PORT || 8080));
 // listen (start app with node server.js)
 
 
