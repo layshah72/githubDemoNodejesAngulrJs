@@ -1,0 +1,26 @@
+<style>
+div.description{
+	position:absolute; /* absolute position (so we can position it where we want)*/
+	bottom:0px; /* position will be on bottom */
+	left:0px;
+	text-align: center;
+	/* styling bellow */
+	
+	opacity:0.2; /* transparency */
+	filter:alpha(opacity=60); /* IE transparency */
+	  position: relative;
+}
+</style>
+ <div id="menuIcon" class="large-2 columns" style="text-align:center;">
+ 	
+            <a class="close-reveal-modal" href={{url}} style="position:relative">
+            	<img  src="{{src}}" style="height:256px"/>
+            	   <div >
+        		      <!-- description content -->
+        			     <div style="text-shadow: 2px 2px #ff0000;"> {{data}} </div>
+          			   <!-- end description content -->
+        		  </div>
+        	   
+      <!-- end description div -->
+            </a>
+ </div>

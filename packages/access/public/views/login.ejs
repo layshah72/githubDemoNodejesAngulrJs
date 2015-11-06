@@ -1,0 +1,139 @@
+<!-- 
+  Copyright (C) 2015, ottlo pvt. ltd.
+  
+  Description : Public View Page - login: Login page.
+  
+  @author lay shah
+ -->
+ <!--
+<!DOCTYPE html>
+<html lang="en" ng-app="clearstreamApp">
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Clearstream</title>
+
+<link rel="stylesheet"
+	href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="dist/css/access.min.css">
+<script>
+
+</script>
+<style>
+.form ng-pristine ng-valid ng-scope{
+	
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 10;
+  width: 18em;
+  margin: -14em 0 0 -12em;
+  border-radius: 8px;
+  padding: 2.5em;
+  background-color: #fff;
+  text-align: center;
+  transition: opacity .8s ease-in-out,-webkit-transform .8s ease-in-out;
+  transition: opacity .8s ease-in-out,transform .8s ease-in-out;
+}
+</style>
+</head>
+
+<body style="font-family:Arial, Verdana; background-image:url(images/Christmas-Background-Picture-1280-1024-465960.jpeg);width:100vw; min-height:100vh;background:cover;">
+	<div id="container">
+-->
+  {{  FBInit('377645159111615') }}
+	<script src="js/aws-sdk-2.1.14.min.js"></script>	
+	<script src="js/amazon-cognito.min.js"></script>
+
+  <form  action="/login" method="post" style="position: absolute;
+  left: 50%;
+  top: 60%;
+  z-index: 10;
+  width: 18em;
+  margin: -14em 0 0 -12em;
+  border-radius: 8px;
+  padding: 2.5em;
+  background-color: rgba(104, 80, 139, 0.78);
+  text-align: center;
+  transition: opacity .8s ease-in-out,-webkit-transform .8s ease-in-out;
+  transition: opacity .8s ease-in-out,transform .8s ease-in-out;">
+    <div>
+        <label style="color:white;position:relative">Username:</label>
+        <input  type="text" name="username"/>
+    </div>
+    <div>
+        <label style="color:white;position:relative">Password:</label>
+        <input type="password" name="password"/>
+    </div>
+    <div>
+      <input type="submit" class="button" value="Log In"  />
+           Or 
+      <script>
+        function checkLoginStatei() {
+          angular.element(document.getElementById('call')).scope().checkLoginState();         
+        }
+      </script>
+
+
+    
+      <div id="status">
+        <!--
+        Below we include the Login Button social plugin. This button uses
+        the JavaScript SDK to present a graphical Login button that triggers
+        the FB.login() function when clicked.
+        -->
+        <span id="call"></span>
+        <fb:login-button scope="public_profile,email"class="button"  onlogin="checkLoginStatei();">
+        </fb:login-button>
+      </div>
+    </div> 
+  </form>
+
+<!--  
+		<div class="row">
+			<header class="top-bar">
+				<h1 id="header-logo">
+					<a href="/"><img alt="Clearstream Logo"
+						src="accessimages/logo.jpg" title="Clearstream Logo" /></a>
+				</h1>
+			</header>
+		</div>
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<div id="sign-in-screen">
+					<h4>Welcome Back!</h4>
+					<form action="/login" method="post">
+						<% if (loginMessage.length > 0) { %>
+							<div class="cs-error"><%= loginMessage %></div>
+						<% } %>
+						<div class="fields">
+							<label for="user_email">Email</label> <input type="text"
+								pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,3})+$"
+								placeholder="Email" name="username" id="user_email"
+								class="form-control" autofocus="autofocus">
+						</div>
+
+						<div class="fields">
+							<label for="user_password">Password</label> <input
+								type="password" placeholder="Password" name="password"
+								id="user_password" class="form-control" required>
+						</div>
+
+						<div class="fields">
+							<input type="submit" value="Sign In" class="btn sign-in">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+-->	
+</body>
+<script src="bower_components/foundation/js/foundation.js"></script>
+<script>
+	$(document).foundation();
+	</script>
+</html>

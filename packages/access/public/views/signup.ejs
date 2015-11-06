@@ -1,0 +1,103 @@
+<div ng-app="accessModule" ng-conroller="signupController">
+		<script src="js/aws-sdk-2.1.14.min.js"></script>	
+	<script src="js/amazon-cognito.min.js"></script>
+	<div class="row" style="color:white;text-align:center">
+		<h1 style="color:white">Sign Up</h1>
+	</div>
+	<form data-abide>
+		<div class="row">
+
+		    <div class="large-4 columns">
+		      <label style="color:white">First name*
+		        <input type="text" placeholder="First name" ng-model="firstName" required/>
+		      </label>
+		    </div>
+
+
+		    <div class="large-4 columns">
+		      <label style="color:white">Middel name*
+		        <input type="text" placeholder="Middel name" ng-model="middelName" required/>
+		      </label>
+		    </div>
+
+
+		    <div class="large-4 columns">
+		      <label style="color:white">Last name*
+		        <input type="text" placeholder="Last name" ng-model="lastName" required />
+		      </label>
+		    </div>
+		  </div>
+
+		
+		<div class="row">
+			<div class="large-6 columns">
+				<label style="color:white">Birth Date*
+		 		<input type="date" name="bday" placeholder="Birth Date" ng-model="birthDate" required  max="2015-4-27">
+		 	</div>
+		 	<div class="large-6 columns">
+				<label style="color:white" >Gender*
+ 				<select ng-model="gender">
+		          <option value="male">Male</option>
+		          <option value="female">Female</option>
+  
+        		</select>
+		 	</div>
+		</div>
+		<div class="row">
+			<div class="large-3 columns">
+				<label style="color:white">City
+		 		<input type="text" name="City" ng-model="city" placeholder="City" >
+		 	</div>
+		 	<div class="large-3 columns">
+				<label style="color:white">State
+		 		<input type="text" name="State" ng-model="state" placeholder="State" >
+		 	</div>
+
+		 	<div class="large-3 columns">
+				<label style="color:white">Country
+		 		<input type="text" name="Country" ng-model="country" placeholder="India" >
+		 	</div>
+		 	<div class="large-3 columns">
+				<label style="color:white">Zip code
+		 		<input type="text" name="Zip code" ng-model="zipCode" placeholder="Zip code" required pattern="[0-9]+" >
+		 		 <small class="error">Zip code is not correct</small>
+		 	</div>
+		</div>
+
+		<div class="row">
+			<div class="large-4 columns">
+			    <label style="color:white">Email*
+			      <input type="email" ng-model="email" required>
+			    </label>
+    			<small class="error">An email address is required.</small>
+  			</div>
+  			<div class="large-4 columns">
+			    <label style="color:white">Password*
+			      <input type="Password" ng-model="password" required>
+			    </label>
+    			<small class="error">Password must contain alpha num special char required.</small>
+  			</div>
+  			<div class="large-4 columns">
+			    <label style="color:white">Confirm Password*
+			      <input type="Password" ng-model="confirmPassword" required>
+			    </label>
+    			<small class="error">Password must match</small>
+  			</div>
+		</div>
+		<div class="row">
+			<div class="large-6 columns">
+      			<label style="color:white">Interest Area</label>
+      				<input id="checkbox1" type="checkbox" ng-click="AddselectedInterests(Cricket)" ><label style="color:white" for="checkbox1">Cricket</label>
+      				<input id="checkbox2" type="checkbox" ng-click="AddselectedInterests(Movies)"><label style="color:white" for="checkbox2">Movies</label>
+      				<input id="checkbox3" type="checkbox" ng-click="AddselectedInterests(News)"><label for="checkbox3" style="color:white">News</label>
+      				<input id="checkbox4" type="checkbox" ng-click="AddselectedInterests(Games)"><label for="checkbox4" style="color:white">Games</label>
+    			</div>
+  		</div>
+		
+		<div class="row" style="text-align:center;">
+			<div class="large-2 columns" style="item-align:center;" ng-click="CreateUser()">
+	          <div class="button postfix">Get me In</div>
+	        </div>
+        </div>
+	</form>  
+</div>	  

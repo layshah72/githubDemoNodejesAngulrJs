@@ -1,0 +1,68 @@
+
+<div class="container" ng-app="adsModule" style="  align-self: center;
+  align-content: center;
+  text-align: center;
+  align-items: center;">
+  
+  <script>
+    AWS.config.update({accessKeyId: 'AKIAJLFZ4OIWVUT7W3QQ', secretAccessKey: '6hZMZGzE9U8WDj+HJjyk3cRRXgddLu2sR0KI/Q0f'});
+      // Configure your region
+    AWS.config.region = 'us-east-1';
+      
+  </script>
+  
+  Enter Your Ads Creative Name: 
+  <input type="text" ng-model="adsCreativeName"/>
+  <div ng-controller = "fileUploadController">
+  	<form  method="POST">
+      <div class="row">
+        <div class="col-md-4"/>
+        <div class="col-md-2">
+          <input type="file" style="align:center" file-model="myFile"/>
+          <button class='btn btn-default' ng-click="uploadFile('private-watchvideos')">upload me</button>
+        </div>
+      </div>  
+
+  	</form>
+
+    <br />
+    Enter your content short form: 
+    <input type="text" ng-model="adsCreativeName"/>
+    <form  method="POST">
+      <div class="row">
+        <div class="col-md-4"/>
+        <div class="col-md-2">
+          <input type="file" style="align:center" file-model="myFile"/>
+          <button class='btn btn-default' ng-click="uploadFile('ottloadcreative')">Upload Content</button>
+        </div>
+      </div>  
+    </form>
+
+
+    <br />
+    Enter your app name: 
+    <input type="text" ng-model="adsCreativeName"/>
+    <form  method="POST">
+    <div class="col-md-4"/>
+      <div class="col-md-2">
+        <input type="file" style="align:center" file-model="myFile"/>
+        <button class='btn btn-default' ng-click="uploadFile('ottloadcreative')">Upload App</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="results"></div>
+   <script src="service/AWS-service.js"></script>
+   <script src="service/fileUpload-service.js"></script>
+  <script src="controller/fileUpload-controller.js"></script>
+  <script src="rootOttloApp/shared/directives/fileModel-directive.js"></script>
+  
+</div>
+  
+
+
+
+ 
+  
+  
+

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title ng-bind="title"></title>
+<meta char="utf-8" name="viewport"
+	content="width=device-width, initial-scale=1">
+<link href="images/favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="css/bootstrap.min.css">
+		  <link rel="stylesheet" href="css/font-awesome.min.css">-->
+
+<link rel="stylesheet" href="css/clearstream.css">
+<link rel="stylesheet" href="report/css/dc.css">
+</head>
+<body ng-app="rootOttloApp">
+	<section id="container" ng-controller="indexController">
+		<header class="cs-bg">
+			<div id="sidebar-toggle-box">
+				<i class="fa fa-bars fa-2" ng-model="isShown" ng-click="isShow()"></i>
+			</div>
+			<a href="#/"><img alt="logo" src="images/logo.jpg"></a>
+			<div id="username" class="text-right">Hello, Clearstream</div>
+		</header>
+
+		<!-- Floating sidebar -->
+		<aside ng-show="isShown" class="sidebar-show-hide">
+			<div id="sidebar">
+				<div aria-multiselectable="true" role="tablist" id="accordion"
+					class="panel-group">
+
+					<!-- Dashboard Panel -->
+					<div class="panel panel-info">
+						<div id="headingOne" role="tab" class="panel-heading">
+							<h3 class="panel-title">
+								<i class="fa fa-tachometer"></i> <a aria-controls="collapseOne"
+									aria-expanded="false" href="#collapseOne"
+									data-parent="#accordion" data-toggle="collapse"
+									class="collapsed"> Dashboard </a>
+							</h3>
+						</div>
+						<div aria-labelledby="headingOne" role="tabpanel"
+							class="panel-collapse collapse" id="collapseOne">
+							<div class="panel-body">
+								<ul class="nav nav-pills nav-stacked">
+									<li role="presentation"><a href="#/">Summary</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- Data Stream Setup Panel -->
+					<div class="panel panel-info">
+						<div id="headingTwo" role="tab" class="panel-heading">
+							<h3 class="panel-title">
+								<i class="fa fa-list-alt"></i> <a aria-controls="collapseTwo"
+									aria-expanded="false" href="#collapseTwo"
+									data-parent="#accordion" aria-expanded="false"
+									data-toggle="collapse" class="collapsed">Data Stream Setup</a>
+							</h3>
+						</div>
+						<div aria-labelledby="headingTwo" role="tabpanel"
+							class="panel-collapse collapse in" id="collapseTwo"
+							aria-expanded="false">
+							<div class="panel-body">
+								<ul class="nav nav-pills nav-stacked">
+									<li role="presentation"
+										ng-class="{ active: activePath=='/partners' || activePath=='/createPartner'}"><a
+										href="#/partners">Partner</a></li>
+									<li role="presentation"
+										ng-class="{ active: activePath=='/dataStreams' || activePath=='/createDataStream' || activePath=='/dataStreamUpload'}"><a
+										id="data-stream" href="#/dataStreams">Data Stream</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- Data User Setup Panel -->
+					<div class="panel panel-info">
+						<div id="headingThree" role="tab" class="panel-heading">
+							<h3 class="panel-title">
+								<i class="fa fa-user-plus"></i> <a aria-controls="collapseThree"
+									aria-expanded="false" href="#collapseThree"
+									data-parent="#accordion" data-toggle="collapse"
+									class="collapsed">Data User Setup</a>
+							</h3>
+						</div>
+						<div aria-labelledby="headingThree" role="tabpanel"
+							class="panel-collapse collapse" id="collapseThree"
+							aria-expanded="false">
+							<div class="panel-body">
+								<ul class="nav nav-pills nav-stacked">
+									<li role="presentation" class=""><a href="#/">Data
+											User Setup</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- Analytics Panel -->
+					<div class="panel panel-info">
+						<div id="headingFour" role="tab" class="panel-heading">
+							<h3 class="panel-title">
+								<i class="fa fa-bar-chart"></i> <a aria-controls="collapseFour"
+									aria-expanded="false" href="#collapseFour"
+									data-parent="#accordion" data-toggle="collapse"
+									class="collapsed">Reports</a>
+							</h3>
+						</div>
+						<div aria-labelledby="headingFour" role="tabpanel"
+							class="panel-collapse collapse" id="collapseFour"
+							aria-expanded="false">
+							<div class="panel-body">
+								<ul class="nav nav-pills nav-stacked">
+									<li role="presentation"
+										ng-class="{ active: activePath=='/summary'}"><a
+										href="#/summary">Summary</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- sidebar ends-->
+		</aside>
+
+		<!-- Main Content -->
+		<section id="main-content">
+			<section id="wrapper">
+				<div id="content-part">
+					<div ng-view></div>
+				</div>
+			</section>
+		</section>
+
+		<footer class="site-footer">
+			<div class="text-center">&copy;2015 Clearstream.tv</div>
+		</footer>
+	</section>
+
+	<!-- =============================================================== -->
+	<!-- Start Loading All JavaScripts -->
+
+	<!-- Start Third Party / External JavaScripts -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular-resource.min.js"></script>
+	<script src="js/angular-route.min.js"></script>
+	<script src="js/angular-base64-upload.js"></script>
+	<script src="js/ejs.min.js"></script>
+	<script src="js/angular-animate.min.js"></script>
+	<script src="js/ui-bootstrap-custom.min.js"></script>
+
+	<script src="report/js/d3.min.js"></script>
+	<script src="report/js/crossfilter.min.js"></script>
+	<script src="report/js/dc-2.1.0-dev.js"></script>
+	<!-- End Third Party / External JavaScripts -->
+
+	<!-- Start Clearstream JavaScripts -->
+	<!-- All app.js -->
+	<script src="rootOttloApp/app.js"></script>
+	<script src="dist/packages/shared/app.min.js"></script>
+	<script src="dist/packages/partnermgmt/app.min.js"></script>
+	<script src="dist/packages/report/app.min.js"></script>
+
+	<!-- Shared JS 
+	<script src="rootOttloApp/shared/controllers/error-controller.js"></script>
+	<script src="rootOttloApp/shared/controllers/index-controller.js"></script>
+	<script src="rootOttloApp/shared/services/message-service.js"></script>
+	<script src="rootOttloApp/shared/util/app-util.js"></script>
+	<script src="rootOttloApp/shared/util/parsing-util.js"></script>
+	<script src="rootOttloApp/shared/directives/fileRead-directive.js"></script>
+-->
+	<!-- Routers JS -->
+	<!-- <script src="rootOttloApp/partnermgmt/public/routes/partnermgmt-route.js"></script>
+  <script src="rootOttloApp/report/public/routes/report-route.js"></script> -->
+
+	<!-- Resources JS -->
+	<!-- <script
+		src="rootOttloApp/partnermgmt/public/resources/partner-resource.js"></script>
+	<script
+		src="rootOttloApp/partnermgmt/public/resources/category-resource.js"></script>
+	<script
+		src="rootOttloApp/partnermgmt/public/resources/subCategory-resource.js"></script>
+	<script
+		src="rootOttloApp/partnermgmt/public/resources/eventValueType-resource.js"></script>
+	<script
+		src="rootOttloApp/partnermgmt/public/resources/dataStreamConf-resource.js"></script> -->
+
+	<!-- Services JS -->
+	<!-- <script src="rootOttloApp/partnermgmt/public/services/partner-service.js"></script>
+	<script
+		src="rootOttloApp/partnermgmt/public/services/category-service.js"></script>
+	<script
+		src="rootOttloApp/partnermgmt/public/services/subCategory-service.js"></script>
+	<script
+		src="rootOttloApp/partnermgmt/public/services/eventValueType-service.js"></script>
+	<script
+		src="rootOttloApp/partnermgmt/public/services/dataStreamConf-service.js"></script>
+ -->
+	<!-- Controllers JS -->
+	<!-- <script
+		src="rootOttloApp/partnermgmt/public/controllers/partner-controller.js"></script>
+	<script
+		src="rootOttloApp/partnermgmt/public/controllers/dataStreamConf-controller.js"></script>
+	<script
+		src="rootOttloApp/partnermgmt/public/controllers/dataStreamUpload-controller.js"></script> -->
+	<!-- <script src="rootOttloApp/report/public/controllers/report-controller.js"></script> -->
+	<!-- End Clearstream JavaScripts -->
+
+	<!-- End Loading All JavaScripts -->
+	<!-- =============================================================== -->
+
+</body>
+</html>

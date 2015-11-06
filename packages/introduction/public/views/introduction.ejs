@@ -1,0 +1,226 @@
+
+
+	<div  ng-app="introductionModule" ng-controller="introductionPageController"   style="background-color: whitesmoke ;transition: all 0.1s ease-in-out; background: #CCCCFF; 
+	margin-left: 90px;
+	margin-right: 90px;
+	border-radius: 30px;margin-top:2%">
+		
+		<link rel="stylesheet" href="/assets/HABgu/css/style.css" media="screen" type="text/css" />
+		<style>
+		button#facebook {
+			border-color: #2d5073;
+			background-color: #3b5998;
+			background-image: url(http://icons.iconarchive.com/icons/danleech/simple/512/facebook-icon.png);
+		}
+		button#Linkedin {
+			border-color: #2d5073;
+			background-color: rgba(30, 75, 169, 0.84);
+			background-image: url(http://hyland-online.com/images/socialmedia/linkedin-icon.png);
+		}
+		.overlay-arrow {
+			position: relative;
+			font-size: 9px;
+			color: red;
+			position: absolute;
+			right: 0px;
+			top : 10px;
+			cursor: default;
+			line-height: 1px;
+
+		}
+		/* font-size, positioning, visibility*/
+		/*p{
+			font-size: 14px;
+			margin: 30px;
+			white-space:nowrap;
+			overflow: hidden;
+			width: 30em;
+			animation: type 5s steps(50, end) 1;	
+		}
+		*/
+		/* let's animate, it's super easy */
+		@keyframes type{
+			from{ width: 0;}
+		}
+		looks like something is wrong, Fixed!!! 
+
+		/*let's make it more realistic, so I added span tag, let's animate span*/
+		span{
+			animation: blink 1s infinite;
+		}
+
+		@keyframes blink{
+			to{ opacity: .0;}
+		}
+
+		/*That's it. Enjoy!!! :) */
+
+
+		</style>
+
+		<div style = "position:relative" >
+			<div class="row">
+				<h1 style="text-align:center;color:black">Let's introduce each other</h1>
+		
+
+				<div class="col-md-4">
+					<div class="message-thread">		
+						<div style="float: right;
+								  clear: both;
+								  text-align: left;
+								  background: #90B2CC;
+								  min-width: 108%;
+								  max-width: 100%;
+								  margin: 15px;
+								  margin-bottom: 15px;
+								  padding: 12px 10px 5px 10px;
+								  cursor: pointer;
+								  background-color:rgba(115, 97, 231, 0.92);
+								  color: white;
+								  margin-right: -50px;
+								  border-radius: 10px;
+								  font-weight: 500;
+								  font-size:large;" >
+								  	<span class="bubble-right" style="  margin-top: 21px;background-color:rgba(125, 108, 231, 1);">
+								  	</span>
+									
+									
+									<p style="  padding-right: 50px; padding-top: 20px">
+											Hi Pranjal, 
+											<br/> 
+											<br/>
+									</p> 
+									<p>
+									We are team Funvest.<br />
+									<br />
+									</p> 
+									<p>We are online investment planner</p>
+								</div>
+							</div>			
+						</div>
+						<div class="col-md-1" style="margin-top: 25px; margin-left: 60px; margin-right:8px">
+							<img src="../assets/assets/img/pratik.png"></img>
+						</div>
+						<div class="col-md-1" style ="width: 3%" >
+						</div>
+						<div class="col-md-1" style="margin-top: 25px;    margin-right: -17px;">
+							<img src="../assets/assets/img/pratik.png"></img>
+						</div>
+						<div class="col-md-4">
+						<div style="  float: left;
+							  clear: both;
+							  text-align: left;
+							  background: #90B2CC;
+							  min-width: 114%;
+							  max-width: 100%;
+							  margin: -50px;
+							  margin-bottom: 15px;
+							  margin-top:15px;
+							  padding: 12px 10px 5px 5px;
+							  cursor: pointer;
+							  background-color:rgba(115, 97, 231, 0.92);
+							  color: white;
+							  margin-left: 28px;
+							  border-radius: 10px;
+							  padding-right: 35px;
+							  font-weight: 500;
+							  font-size: large;">
+	  						<span class="bubble-left" style="  margin-top: 21px;background-color:rgba(125, 108, 231, 1);">
+	  						</span>
+							
+							
+							<p style="text-align: left; padding-top: 15px; padding-left: 10px;">
+								Hi
+								<br /><br />
+								I am  
+								<span style="background-color:rgba(125, 108, 231, 1)">
+										<input  autofocus="autofocus" style="width: 70px;
+										  height: 25px;
+										  background-color:rgba(125, 108, 231, 1);;
+										  border:none;
+										  border-bottom-style: solid;
+										  border-width: 1px;text-align: center;" ng-model="name" placeholder="Name">
+										</input>
+								</span>
+									
+							</p>
+							<br />
+							<p style="padding-left: 10px;">
+								I am  
+								<span style="background-color:rgba(125, 108, 231, 1)">
+									<input  style="width: 70px;
+											  height: 25px;
+											  background-color:rgba(125, 108, 231, 1);
+											  border:none;
+											  border-bottom-style: solid;
+											  border-width: 1px;text-align: center;" placeholder="Age"
+											  ng-model="age">
+								</span>
+								Years old
+							</p>
+							<br />
+							<p style="padding-left: 10px;">
+							My Annual Income is  
+							<span style="rgba(115, 97, 231, 0.92);">
+								<input  style="width: 90px;
+										  height: 25px;
+										  background-color:rgba(125, 108, 231, 1);
+										  border:none;
+										  border-bottom-style: solid;
+										  border-width: 1px;text-align: center;" placeholder="Income"
+										  ng-model="income">
+								</input>
+							</span>
+							Lacs
+						</p>
+						<br />
+						<p style="padding-left: 10px;">I am  <span style="  background-color: whitesmoke;">
+							<select ng-change="child()" ng-model="married" style="width: 100px;
+							  height: 33px;
+							  background-color:rgba(125, 108, 231, 1);
+							  border:none;
+							  border-bottom-style: solid;
+							  border-width: 1px;text-align: center;-webkit-appearance: none;    border-color: white;color:white" placeholder="Marratial stat" >
+								<option>Married</option>
+								<option>Unmarried</option>
+
+							</select>
+							<span class="overlay-arrow">&#9660;</span>
+						</span>
+									
+						</p>
+						<br />
+						<p style="padding-left: 10px;"  ng-show="childQue">Do you have any children? <span style="  background-color: whitesmoke;">
+							<select style="width: 100px;
+							  height: 33px;
+							  background-color:rgba(125, 108, 231, 1);
+							  border:none;
+							  border-bottom-style: solid;
+							  border-width: 1px;text-align: center;-webkit-appearance: none;    border-color: white;color:white" placeholder="Child" ng-model="child">
+								<option>Yes</option>
+								<option>No</option>
+
+							</select>
+							<span class="overlay-arrow">&#9660;</span>
+							</span>
+									
+						</p>
+					</div>			
+				</div>
+			</div> 
+		
+			<br />
+			<br />
+			<br />
+			<div style="text-align:center;margin-left: 175px;" ng-click="saveIntroduction()">
+				<input type="button" class="btn btn-primary" style="background-color: orange;  margin-top: -67px;margin-right: 192px;color:white;  width: 200px; height:50px; border: none;
+	  			font-weight: 600;"  value="Let's set your Goals" />
+	  			
+			</div>
+			<div ng-model="message"></div>
+		</div>
+	</div>
+
+
+	</div>
+		

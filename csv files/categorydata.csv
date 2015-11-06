@@ -1,0 +1,10 @@
+category,age_lower_bound,age_upper_bound,income_lower_bound,income_upper_bound,maritial_status,children
+1,18,28,0,0,0,0
+2,29,40,0,0,0,0
+3,41,100,0,0,0,0
+4,18,28,0,0,1,0
+5,29,40,0,0,1,0
+6,41,100,0,0,1,0
+7,18,28,0,0,1,1
+8,29,40,0,0,1,1
+9,41,100,0,0,1,1

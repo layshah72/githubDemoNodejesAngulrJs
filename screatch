@@ -1,0 +1,18 @@
+#commands sequence
+heroku create
+heroku login
+git commit
+git push heroku master(build success)
+heroku ps:scale web=1
+heroku open
+
+
+#help for grunt+ node
+https://github.com/mbuchetics/heroku-buildpack-nodejs-grunt
+
+
+#setup env variable
+heroku config:set NODE_ENV=production
+
+#rename
+heroku apps:rename newname

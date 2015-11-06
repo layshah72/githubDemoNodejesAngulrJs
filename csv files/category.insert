@@ -1,0 +1,82 @@
+/* CREATE TABLE */
+CREATE TABLE `goal_preference_category_details`(
+category INT(11),
+age_lower_bound DECIMAL(10, 2),
+age_upper_bound DECIMAL(10, 2),
+income_lower_bound DECIMAL(10, 2),
+income_upper_bound DECIMAL(10, 2),
+maritial_status DECIMAL(10, 2),
+children DECIMAL(10, 2)
+);
+/* INSERT QUERY */
+INSERT INTO `goal_preference_category_details`(
+category, age_lower_bound, age_upper_bound,
+income_lower_bound, income_upper_bound,
+maritial_status, children
+)
+VALUES
+(1, 18, 28, 0, 0, 0, 0);
+/* INSERT QUERY */
+INSERT INTO `goal_preference_category_details`(
+category, age_lower_bound, age_upper_bound,
+income_lower_bound, income_upper_bound,
+maritial_status, children
+)
+VALUES
+(2, 29, 40, 0, 0, 0, 0);
+/* INSERT QUERY */
+INSERT INTO `goal_preference_category_details`(
+category, age_lower_bound, age_upper_bound,
+income_lower_bound, income_upper_bound,
+maritial_status, children
+)
+VALUES
+(3, 41, 100, 0, 0, 0, 0);
+/* INSERT QUERY */
+INSERT INTO `goal_preference_category_details`(
+category, age_lower_bound, age_upper_bound,
+income_lower_bound, income_upper_bound,
+maritial_status, children
+)
+VALUES
+(4, 18, 28, 0, 0, 1, 0);
+/* INSERT QUERY */
+INSERT INTO `goal_preference_category_details`(
+category, age_lower_bound, age_upper_bound,
+income_lower_bound, income_upper_bound,
+maritial_status, children
+)
+VALUES
+(5, 29, 40, 0, 0, 1, 0);
+/* INSERT QUERY */
+INSERT INTO `goal_preference_category_details`(
+category, age_lower_bound, age_upper_bound,
+income_lower_bound, income_upper_bound,
+maritial_status, children
+)
+VALUES
+(6, 41, 100, 0, 0, 1, 0);
+/* INSERT QUERY */
+INSERT INTO `goal_preference_category_details`(
+category, age_lower_bound, age_upper_bound,
+income_lower_bound, income_upper_bound,
+maritial_status, children
+)
+VALUES
+(7, 18, 28, 0, 0, 1, 1);
+/* INSERT QUERY */
+INSERT INTO `goal_preference_category_details`(
+category, age_lower_bound, age_upper_bound,
+income_lower_bound, income_upper_bound,
+maritial_status, children
+)
+VALUES
+(8, 29, 40, 0, 0, 1, 1);
+/* INSERT QUERY */
+INSERT INTO `goal_preference_category_details`(
+category, age_lower_bound, age_upper_bound,
+income_lower_bound, income_upper_bound,
+maritial_status, children
+)
+VALUES
+(9, 41, 100, 0, 0, 1, 1);

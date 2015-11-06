@@ -1,0 +1,74 @@
+
+<div ng-app="goalSettingModule" ng-controller="goalSettingController" style="    " >
+    
+    <style>
+    div.description{
+      position:absolute; /* absolute position (so we can position it where we want)*/
+      bottom:0px; /* position will be on bottom */
+      left:0px;
+      text-align: center;
+      /* styling bellow */
+      background-color: rgba(53, 128, 228, 0.94);
+  
+        position: relative;
+    }
+        .starforapp:hover {
+    -webkit-transform:scale(1.1); /* Safari and Chrome */
+    -moz-transform:scale(1.1); /* Firefox */
+    -ms-transform:scale(1.1); /* IE 9 */
+    -o-transform:scale(1.1); /* Opera */
+     transform:scale(1.1);
+} 
+
+
+
+
+
+
+  </style>
+   
+    
+    <br />
+      <div style="text-align:center">Hey Pranjal, let's setup your first fund</div>
+      
+      <div class="row"  ng-repeat="letter in  displayObject track by $index" style="height: 225px;
+        /*background: rgba(16, 136, 136, 0.33);
+        border: double;*/
+        margin-left: 15%;
+        width: 93%;" ng-if="$index % 3 == 0 " >
+
+
+
+        <div  ng-repeat="i in [ $index,$index + 1,$index +2]" ng-if="displayObject[i]!=null">
+        
+          
+          <div id="goalIcon" class="large-3 columns" style="text-align:center;" ng-mouseleave="hoverOut(i)" ng-mouseover="hoverIn(i)" ng-click="saveGoal(displayObject[i])">
+            <a  class="starforapp" >
+              <img   style="height:100px; width: 170px;" src="{{displayObject[i].src}}">
+                <div class='description' style="margin-top:-15%;  width: 60%;margin-left: 19.8%;">
+                    <!-- description content -->
+                    <div class='description_content' style=" margin-top: -25%;  background-color: darkblue;"> {{displayObject[i].goal}} </div>
+                      <!-- end description content -->
+                </div>
+              </img>
+                <!-- end description div -->
+            </a>
+
+            <p ng-show="hover[{{i}}]" style="margin-top:3%;font-size:.8rem">{{displayObject[i].catchy_line}}</p>
+          </div>
+       
+        </div> 
+        </div> 
+      
+          
+        </div>
+   
+  <script src="../../app.js"></script>
+
+    <script src="../../goalSeting/public/controllers/goalSetting-controller.js"></script>
+
+  <script src="../../shared/controllers/index-controller.js"></script>
+  <script>
+      $(document).foundation('orbit');
+    </script>
+</div>

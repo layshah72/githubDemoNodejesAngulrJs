@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+
+<html ng-app="rootFunvestApp" ng-controller="indexController">
+	<head>
+		<script type="text/javascript">
+	    	function toggleClass(this){
+	    		alert("hi");
+	    		this.className=discriptionclick;
+	    	}
+		</script>
+    	<link href="/assets/css/d3.css" rel="stylesheet" type="text/css">
+        <script src="http://d3js.org/d3.v3.min.js"  charset="utf-8"></script>
+		<title ng-bind="title"></title>
+
+		<meta char="utf-8" name="viewport"
+			content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet"
+			href="/assets/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet"
+			href="/assets/font-awesome/font-awesome.min.css">
+		
+		<link rel="stylesheet" href="/assets/font-awesome/font-awesome-animation.min.css">
+	 	
+<link rel="stylesheet" href="https://cdn.rawgit.com/novus/nvd3/v1.8.1/build/nv.d3.css">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.9.0/bootstrap-social.css" rel="stylesheet"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>	
+		<link href="/assets/css/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/assets/Foundation/foundation.css">
+    <script src="/assets/Foundation/jquery.js"></script>
+    <script src="/assets/Foundation/foundation.js"></script>
+    <script src="/assets/Foundation/foundation.orbit.js"></script>
+    	<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/assets/angular/angular.min.js"></script>
+	<script src="/assets/js/angular-route.min.js"></script>
+	<script src="/assets/js/angular-resource.min.js"></script>
+	<script src="/assets/angular/angular-cookies.js"></script>
+	
+   	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+   	<script src="bower_components/angular-base64-upload/dist/angular-base64-upload.min.js"></script>
+	<script src="bower_components/angular-smart-table/dist/smart-table.min.js"></script>
+
+    <!--line chart scripts-->
+
+    <style>
+ 
+         ul li {
+		  display: inline;
+		  text-align: center;
+		}
+
+		a {
+		  display: inline-block;
+		  width: 100%;
+		  padding: .74rem 0;
+		  margin: 0;
+		  text-decoration: none;
+		  color: #333;
+		  padding-bottom: 1;
+		  margin-bottom: -4.5%;
+		      font-size: 15px;
+		}
+
+		 hr {
+		  height: .17rem;
+		  width: 15%;
+		  margin: 0;
+		  background: tomato;
+		  border: none;
+		  transition: .3s ease-in-out;
+		  text-align:center;
+		  margin-left: 5%;
+		}
+
+		/*
+		.three:hover ~ hr {
+		  margin-left: 50%;
+		}
+
+		.four:hover ~ hr {
+		  margin-left: 75%;
+		}
+		*/
+
+    </style>
+		<div class="navbar navbar-fixed-top" ng-show="showNavbar">			
+			<nav class="navbar navbar-default" style="    background-color: #171616;">
+			  <div class="container-fluid">
+			    <!-- Brand and toggle get grouped for better mobile display -->
+			        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        		<span class="sr-only">Toggle navigation</span>
+	        		<span class="icon-bar"></span>
+	        		<span class="icon-bar"></span>
+	        		<span class="icon-bar"></span>
+	      			</button>
+			    <div class="navbar-header" style="color:white;background: transparent;">
+			      
+			      <a class="navbar-brand" style="color: white;background: transparent;" >FunVest</a>
+			    </div>
+
+
+			    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+			      	
+			      
+			      	<ul class="nav navbar-nav navbar-right">
+			        	
+			        	<li class="dropdown-toggle" ng-show="showNavbarDetail" data-toggle="dropdown" role="button" aria-expanded="false"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="transition: all 0.2s ease-in-out"> Why Funvest<span class="caret"></span></a>
+			        		
+			        		<ul class="dropdown-menu" role="menu" style="">
+	            				
+
+	            				<li><a href="value_prop.html">Value Proposition</a></li>
+	            				<li><a href="#">Another action</a></li>
+	            				<li><a  href="#">Something else here</a></li>
+	            				<li  class="divider"></li>
+	            				<li><a  href="#">Separated link</a></li>
+	            				<li   class="divider"></li>
+	            				<li><a  href="#">One more separated link</a></li>
+	          				</ul>
+
+
+			        	</li>
+			        	<li ng-show="showNavbarDetail"><a href="value_prop.html"> Resources </a></li>
+			        	<li ng-show="showNavbarDetail"><a href="#"> About</a></li>
+			        	<li ><a  ><input type="button" class="btn btn-primary" style="background-color:orange;margin-top: -7px" data-toggle="modal" data-target="#loginModal" value="Sign In" ng-click="clearMsg()" ng-show='showSignUpLoginButton'/></a>
+			        	<p ng-show='showfirstName' class="ng-hide" style="z-index:1;color:white" data-dropdown="hover1" data-options="is_hover:false; hover_timeout:5000"> 		{{firstName}}
+								   						<img ng-show='showfirstName' class="ng-hide" src="{{display_pic}}" style="z-index:1;color:white;height:35px">
+								   						 		
+								   					</img>
+							
+						</p>	
+			        	
+			        	</li>
+			        	<li ng-show='showfirstName' style="background: rgba(98, 73, 73, 0.4)">
+								   					 
+
+													<ul id="hover1"  class="f-dropdown" data-dropdown-content>
+													  <li style="background: rgba(98, 73, 73, 0.4)"><a data-reveal-id="forgotPasswordModal" >Change password</a></li>
+													  <li style="background: rgba(98, 73, 73, 0.4)"><a data-reveal-id="secondModal">Change photo</a></li>
+
+													</ul>
+							</li>
+			        	
+						<li  style="background: rgba(98, 73, 73, 0.4)">
+												   
+								    				<div ng-click="logout()" ng-show='showfirstName' class="ng-hide">
+								    					<a  style="  margin: 0px 30px 0px 5px;text-align:center;background: rgba(98, 73, 73, 0.4)"  >
+								    						logout
+								    					</a>
+								    				</div>
+								    		</li>
+			        	<li ><a  href={{signUpLink}}><input type="button" class="btn btn-primary" style="background-color:green;margin-top: -7px" data-toggle="modal" data-target={{signUpModal}} value={{signUpValue}} ng-show='showSignUpLoginButton' /></a></li>
+			    		
+			        
+			      	</ul>
+			    </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+		</div>	
+	
+
+	
+	</head>
+	<body  onload="changebg()" style="overflow:hidden;">
+		
+    <section id="container" >
+    	<div style="
+  margin-top:  1.92%;">
+  <br />
+    	</div>
+     <div id="line1" style="height: 48px;
+  background: rgb(109, 73, 155);
+  " onload="changebg()" ng-show="showStepBar">
+    
+    <div class="row" style="text-align:center;height:45px;">
+        <div class="col-md-2">
+        <br />
+       </div>
+      
+
+      <div class=" col-md-8 container" >
+      <ul>
+
+      <div class="col-md-3 one" ng-click="changeline(1)" style="    padding-right: 24px;">
+        <li class="one">
+        <a href="#/goalSetting" style="padding-bottom: 13px;
+  background-color: transparent;
+  color:white">Goal Selection</a>
+       </li>
+      </div>
+      
+      <div class="col-md-3 two" ng-disabled="disableIP" ng-click="changeline(2)">
+        <li class="two">
+        <a href="#/investmentPlanning" style="padding-bottom: 13px;
+  background-color: transparent;padding-left: 20px;
+  color:white">Investment Planning</a>
+       </li>
+      </div>
+      <div class="col-md-3 three" ng-click="changeline(3)">
+        <li class="three">
+        <a href="#/introduction" style="padding-bottom: 13px;padding-left: 6px;
+  background-color: transparent;
+  color:white">Account</a>
+       </li>
+      </div>
+      <div class="col-md-3 four" ng-click="changeline(4)" style="padding-right: 121px;">
+        <li class="four">
+        <a href="#/investmentPlanning" style="padding-bottom: 13px;
+  background-color: transparent;
+ color:white">Invest</a>
+       </li>
+      </div>
+      <hr id ="hr"/>
+      </ul>  
+  </div>     
+    
+      <div class="col-md-2">
+        Dashboard
+      </div>
+         
+      
+    
+      </div>
+  </div>
+ 
+
+
+  
+			<!-- Main Content -->
+		
+			<section id="main-content">
+				<section id="wrapper">
+					<div id="content-part">
+						<div ng-view> 
+							
+						</div>	
+					</div>
+
+				</section>
+			</section>
+
+		</section>		
+	
+	
+
+	<!-- sign upModal -->
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="padding-top:15px;padding-bottom:82px">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel" style="color:black;font-weight:bold">Come Lets setup your new account!</h4>
+      </div>
+      <div class="modal-body" style="width:100%">
+        <div class="row">
+        	<div class="col-md-6"  style="">
+        	<div class="col-md-11"class="form-group">
+        		 <input type="text" class="form-control" id="First name" placeholder="First name"></input>
+        		 <br />
+        		 <input type="text" class="form-control" id="Last name" placeholder="Last name"></input>
+        		 <br />
+        		 <input type="text" class="form-control" id="Email" placeholder="Email"></input>
+        		 <br />
+        		 <input type="password" class="form-control" id="Password" placeholder="Password"></input>
+        		 <br />
+        		 
+        		 <input type="button" class="btn btn-primary" style="background-color:
+				rgb(255, 77, 0);width:100%" data-toggle="modal" data-target="#myModal" value="Sign Up" ></input>
+    			<span style="font-size:10px;color:black">
+				By Signing up you agree with Funvest's</span>	
+    			<a style="font-size:10px;">Terms of Services</a>
+    			<br />
+    			<br />
+    			<div  class="col-md-12" style=" border-bottom-style: ridge;
+  				border-bottom-width: 2px;">
+  				</div>
+  				<br />
+
+  				<a class="btn btn-block btn-social btn-facebook" ng-click="handleFBLogin()">
+  					<i class="fa-facebook"></i>
+  					Sign in with Facebook
+				</a>
+				<br />
+				<a class="btn btn-block btn-social btn-linkedin">
+  					<i class="fa fa-linkedin"></i>
+  					Sign in with LinkedIn
+				</a>
+        	</div>
+        	
+        		<div   style="border-right-style: ridge;border-right-width: 2px;margin-right: -25px;">
+        		<br />
+        		<br />
+        		<br />
+        		<br />
+        		<br />
+        		<br />
+        		<br />
+        		<br />
+        		<br />
+        		<br />
+        		<br />
+        		<br />
+        		<br />
+        		<br />
+        		<br />
+        		<br />
+        		<br />
+        		<br />
+        		<br />
+        		<br />
+        		<br />
+
+        	</div>
+
+        	</div>
+
+        	<div class="col-md-6" style="color:black;text-align:center">
+        		<div class="col-md-1"></div>
+        		Things you'll love at Funvest
+
+        		<br />
+        		<br />
+        		<br />
+        		<div class="col-md-1"></div>
+        		<img src="\assets\assets\img\whylovefunvest.png"></img>	
+
+        		<br />
+        		<br />
+        		<br />
+
+      	
+        </div>
+      </div>
+      <br />
+      <div class="row" style="text-align:center;color:black;font-size:11px">
+      	Already have an account?<a href="#loginModal" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Sign In</a>
+      </div>
+      
+
+  </div>
+</div>
+</div>
+</div>
+	<!--Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="padding-top:15px;padding-bottom:82px">
+  <div class="modal-dialog" style="margin-left: 35%;">
+    <div class="modal-content" style="width:70%;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel" style="color:black;font-weight:bold" >Log in</h4>
+      </div>
+      <div class="modal-body" style="width:100%">
+        <div class="row">
+        	<div class="col-md-12"  style="border-right-style: solid;border-right-width: 0px;">
+        	<div class="col-md-1"></div>	
+        	<div class="col-md-10"class="form-group" style="color:black">
+
+        		 <input type="text" class="form-control" id="Email" placeholder="Email" ng-model="loginEmail"></input>
+        		 <br />
+        		 <input type="password" class="form-control" id="Password" placeholder="Password" ng-model="loginPassword"></input>
+        		 <br />
+        		 <input type="checkbox"id="Remember me" value="Remember me">   </input>	
+        		 <span style="font-size:14px">Remember me</span>
+        		 <br />
+        		 <br />
+        		 <br />
+        		 <input type="button" class="btn btn-primary" style="background-color:
+				rgb(255, 77, 0);margin-top: -7px;width:100%" data-toggle="modal" data-target="#myModal" value="Sign In" ng-click="handleLogin(loginEmail,loginPassword)" ></input>
+				
+				<br />
+				<div style="text-align:center">
+	    		<a style="text-align:center;font-size:11px">Forgot Password?</a>
+    			</div>
+    			<br />
+
+    			<div  class="col-md-12" style=" border-bottom-style: ridge;
+  				border-bottom-width: 2px;">
+  				</div>
+  				<br />
+
+  				
+
+				<a class="btn btn-block btn-social btn-facebook" href="/auth/facebook" ng-click="handleFBLogin()">
+  					<i class="fa-facebook"></i>
+  					Sign in with Facebook
+				</a>
+				<br />
+				<a class="btn btn-block btn-social btn-linkedin">
+  					<i class="fa fa-linkedin"></i>
+  					Sign in with LinkedIn
+				</a>
+
+        		<br /><!--
+        		<div class="social-wrap a">
+    				<button id="Linkedin" style="width:270px">Sign in with LinkedIn</button>	
+        		</div>
+        	-->
+        	</div>
+        	<div class="col-md-1"></div>
+        	
+      </div>
+      <br />
+      <div class="row" style="text-align:center;color:black;font-size:11px">
+      	Don't have an account?<a href="#signUpModal" data-dismiss="modal" data-toggle="modal" data-target="#signUpModal">Sign Up</a>
+      </div>
+      
+
+  </div>
+</div>
+
+</div>
+	
+	</div>
+
+	<!-- =============================================================== -->
+	<!-- Start Loading All JavaScripts -->
+
+	<!-- Start Third Party / External JavaScripts -->
+
+
+   <script>
+    var counter = 1;
+	function changebg() {
+	    if (counter == 1) {
+	        jQuery('#carousel1').fadeOut(1500);
+	        jQuery('#carousel2').removeClass(".hidebg").addClass(".showbg");
+	        jQuery('#line1').slideUp(100);
+	        jQuery('#line2').slideUp(100);
+	        jQuery("#carousel2").fadeIn(1500);
+	       
+	        jQuery('#line1').slideDown(2200);
+	        jQuery('#line2').slideDown(2200);
+	        counter = 2;
+	    }
+	    else if (counter == 2) {
+	        jQuery("#carousel2").fadeOut(1500);
+	        jQuery("#carousel3").removeClass(".hidebg").addClass(".showbg");
+	        jQuery('#line1').slideUp(100);
+	        jQuery('#line2').slideUp(100);
+	        jQuery("#carousel3").fadeIn(1500);
+	        jQuery('#line1').text("Smart Investment made simple through technology");
+	        jQuery('#line2').text('Goal Based,Simple and Diversified  Investment  Solution Tailored to your needs');
+	        jQuery('#line1').slideDown(2200);
+	        jQuery('#line2').slideDown(2200);
+	        counter = 0;
+	    }
+	    else {
+	        jQuery("#carousel3").fadeOut(1500);
+	        jQuery("#carousel1").removeClass(".hidebg").addClass(".showbg");
+	        jQuery('#line1').slideUp(100);
+	        jQuery('#line2').slideUp(100);
+	        jQuery("#carousel1").fadeIn(1500);
+	        jQuery('#line1').text("Smart Investment made simple through technology");
+	        jQuery('#line2').text('Goal Based,Simple and Diversified Investment  Solution Tailored to your needs');
+	        jQuery('#line1').slideDown(2200);
+	        jQuery('#line2').slideDown(2200);
+	        counter = 1;
+	    }
+	}
+	  
+	  </script>	
+	</section>
+
+
+
+	<!--all app.js files-->
+	<script src="rootFunvestApp/app.js"></script>
+	<script src="dist/packages/shared/app.min.js"></script>
+	<script src="dist/packages/access/app.min.js"></script>
+	<script src="dist/packages/crop/app.min.js"></script>
+	<script src="dist/packages/ads/app.min.js"></script>
+	<script src="dist/packages/firstPage/app.min.js"></script>
+  	<script src="dist/packages/introduction/app.min.js"></script>
+  	<script src="dist/packages/goalSeting/app.min.js"></script>
+  	<script src="dist/packages/investmentPlanning/app.min.js"></script>
+  	
+  	<script>
+      $(document).foundation();
+    </script>
+</body>
+</html>
+

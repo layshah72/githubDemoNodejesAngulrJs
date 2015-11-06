@@ -1,0 +1,222 @@
+
+ondras name -funvest
+-- ---
+-- Globals
+-- ---
+
+-- SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+-- SET FOREIGN_KEY_CHECKS=0;
+
+-- ---
+-- Table 'user'
+-- user details
+-- ---
+
+DROP TABLE IF EXISTS `user`;
+		
+CREATE TABLE `user` (
+  `user_id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `name` VARCHAR NULL DEFAULT NULL,
+  `email_id` VARCHAR NULL DEFAULT NULL,
+  `password` VARCHAR NULL DEFAULT NULL,
+  `user_detail_id` INTEGER NULL DEFAULT NULL,
+  `photo` MEDIUMTEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+) COMMENT 'user details';
+
+-- ---
+-- Table 'user_details'
+-- Store details of users
+-- ---
+
+DROP TABLE IF EXISTS `user_details`;
+		
+CREATE TABLE `user_details` (
+  `user_details_id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `maritial_status` INTEGER NULL DEFAULT NULL,
+  `have_children` INTEGER NULL DEFAULT NULL,
+  `age` INTEGER NULL DEFAULT NULL,
+  `city` INTEGER NULL DEFAULT NULL,
+  `gender` VARCHAR NULL DEFAULT NULL,
+  `annual_income` INTEGER NULL DEFAULT NULL,
+  `user_details_id_user_details` INTEGER NULL DEFAULT NULL,
+  PRIMARY KEY (`user_details_id`)
+) COMMENT 'Store details of users';
+
+-- ---
+-- Table 'account_details'
+-- kyc_status int default 0 COMMENT ''0 is pending, 1 is updated but not verified, 2 is verified successfully, 3 is verified but unsuccessful'', ecs_mandate_status int default 0 COMMENT ''0 is pending, 1 is updated but not verified, 2 is verified successfully, 3 is verified but unsuccessful'' );
+-- ---
+
+DROP TABLE IF EXISTS `account_details`;
+		
+CREATE TABLE `account_details` (
+  `account_no` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `KYC_status` INTEGER NULL DEFAULT NULL,
+  `ECS_mandate_pending` INTEGER NULL DEFAULT NULL,
+  PRIMARY KEY (`account_no`)
+) COMMENT 'kyc_status int default 0 COMMENT ''0 is pending, 1 is updated';
+
+-- ---
+-- Table 'person_account_mapping'
+-- map prson and his account
+-- ---
+
+DROP TABLE IF EXISTS `person_account_mapping`;
+		
+CREATE TABLE `person_account_mapping` (
+  `person_account_mapping_id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `user_id` INTEGER NULL DEFAULT NULL,
+  `account_no` INTEGER NULL DEFAULT NULL,
+  PRIMARY KEY (`person_account_mapping_id`)
+) COMMENT 'map prson and his account';
+
+-- ---
+-- Table 'goal_preference_category_details'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `goal_preference_category_details`;
+		
+CREATE TABLE `goal_preference_category_details` (
+  `goal_preference_category_details_id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `category` INTEGER NULL DEFAULT NULL,
+  `age_lower_bound` INTEGER NULL DEFAULT NULL,
+  `age_upper_bound` INTEGER NULL DEFAULT NULL,
+  `income_lower_bound` INTEGER NULL DEFAULT NULL,
+  `income_upper_bound` INTEGER NULL DEFAULT NULL,
+  `maritial_status` INTEGER NULL DEFAULT NULL,
+  `children` INTEGER NULL DEFAULT NULL,
+  PRIMARY KEY (`goal_preference_category_details_id`)
+);
+
+-- ---
+-- Table 'goal_detail'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `goal_detail`;
+		
+CREATE TABLE `goal_detail` (
+  `goal_detail_id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `goal` INTEGER NULL DEFAULT NULL,
+  `investment` INTEGER NULL DEFAULT NULL,
+  `loan` INTEGER NULL DEFAULT NULL,
+  `insurance` INTEGER NULL DEFAULT NULL,
+  `image_path` VARCHAR NULL DEFAULT NULL,
+  PRIMARY KEY (`goal_detail_id`)
+);
+
+-- ---
+-- Table 'category_goal_map'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `category_goal_map`;
+		
+CREATE TABLE `category_goal_map` (
+  `category_goal_map_id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `category_id` INTEGER NULL DEFAULT NULL,
+  `goal_id` INTEGER NULL DEFAULT NULL,
+  `order` INTEGER NULL DEFAULT NULL,
+  PRIMARY KEY (`category_goal_map_id`)
+);
+
+-- ---
+-- Table 'goal_setup'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `goal_setup`;
+		
+CREATE TABLE `goal_setup` (
+  `goal_setup_id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `goal_id` INTEGER NULL DEFAULT NULL,
+  `account_number` INTEGER NULL DEFAULT NULL,
+  `lumpsum` INTEGER NULL DEFAULT NULL,
+  `contribution` INTEGER NULL DEFAULT NULL,
+  `estimated_target` INTEGER NULL DEFAULT NULL,
+  `time_horizon` INTEGER NULL DEFAULT NULL,
+  `risk_profile` INTEGER NULL DEFAULT NULL,
+  `status` INTEGER NULL DEFAULT NULL,
+  PRIMARY KEY (`goal_setup_id`)
+);
+
+-- ---
+-- Table 'portfolio_category'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `portfolio_category`;
+		
+CREATE TABLE `portfolio_category` (
+  `portfolio_category_id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `time_horizon_lower_bound` INTEGER NULL DEFAULT NULL,
+  `time_horizon_upper_bound` INTEGER NULL DEFAULT NULL,
+  `risk_profile` INTEGER NULL DEFAULT NULL,
+  `portfolio_name` INTEGER NULL DEFAULT NULL,
+  PRIMARY KEY (`portfolio_category_id`)
+);
+
+-- ---
+-- Table 'mutual_fund_detail'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `mutual_fund_detail`;
+		
+CREATE TABLE `mutual_fund_detail` (
+  `mutual_fund_detail_id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `name` INTEGER NULL DEFAULT NULL,
+  `description` INTEGER NULL DEFAULT NULL,
+  `close_nav` INTEGER NULL DEFAULT NULL,
+  PRIMARY KEY (`mutual_fund_detail_id`)
+);
+
+-- ---
+-- Foreign Keys 
+-- ---
+
+ALTER TABLE `user` ADD FOREIGN KEY (user_detail_id) REFERENCES `user_details` (`user_details_id`);
+ALTER TABLE `person_account_mapping` ADD FOREIGN KEY (user_id) REFERENCES `user` (`user_id`);
+ALTER TABLE `person_account_mapping` ADD FOREIGN KEY (account_no) REFERENCES `account_details` (`account_no`);
+
+-- ---
+-- Table Properties
+-- ---
+
+-- ALTER TABLE `user` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `user_details` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `account_details` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `person_account_mapping` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `goal_preference_category_details` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `goal_detail` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `category_goal_map` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `goal_setup` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `portfolio_category` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `mutual_fund_detail` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ---
+-- Test Data
+-- ---
+
+-- INSERT INTO `user` (`user_id`,`name`,`email_id`,`password`,`user_detail_id`,`photo`) VALUES
+-- ('','','','','','');
+-- INSERT INTO `user_details` (`user_details_id`,`maritial_status`,`have_children`,`age`,`city`,`gender`,`annual_income`,`user_details_id_user_details`) VALUES
+-- ('','','','','','','','');
+-- INSERT INTO `account_details` (`account_no`,`KYC_status`,`ECS_mandate_pending`) VALUES
+-- ('','','');
+-- INSERT INTO `person_account_mapping` (`person_account_mapping_id`,`user_id`,`account_no`) VALUES
+-- ('','','');
+-- INSERT INTO `goal_preference_category_details` (`goal_preference_category_details_id`,`category`,`age_lower_bound`,`age_upper_bound`,`income_lower_bound`,`income_upper_bound`,`maritial_status`,`children`) VALUES
+-- ('','','','','','','','');
+-- INSERT INTO `goal_detail` (`goal_detail_id`,`goal`,`investment`,`loan`,`insurance`,`image_path`) VALUES
+-- ('','','','','','');
+-- INSERT INTO `category_goal_map` (`category_goal_map_id`,`category_id`,`goal_id`,`order`) VALUES
+-- ('','','','');
+-- INSERT INTO `goal_setup` (`goal_setup_id`,`goal_id`,`account_number`,`lumpsum`,`contribution`,`estimated_target`,`time_horizon`,`risk_profile`,`status`) VALUES
+-- ('','','','','','','','','');
+-- INSERT INTO `portfolio_category` (`portfolio_category_id`,`time_horizon_lower_bound`,`time_horizon_upper_bound`,`risk_profile`,`portfolio_name`) VALUES
+-- ('','','','','');
+-- INSERT INTO `mutual_fund_detail` (`mutual_fund_detail_id`,`name`,`description`,`close_nav`) VALUES
+-- ('','','','');

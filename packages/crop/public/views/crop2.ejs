@@ -1,0 +1,20 @@
+<div ng-app="cropModule" ng-controller="crop2Controller">
+	<style>
+		div#cropped-image {
+    		height: 150px;
+    		width: 150px;
+    		overflow: hidden;
+		}
+	</style>
+	<script src="js/../crop/js/jquery.Jcrop.js"></script>
+	
+
+	<link href="css/../crop/css/jquery.Jcrop.css" rel="stylesheet" type="text/css">
+	
+    <img-cropped src='http://deepliquid.com/Jcrop/demos/demo_files/pool.jpg' selected='selected(cords)'></img-cropped>
+	<div ng-show="cropped" id="cropped-image-container">
+	    <img id="preview" src='http://deepliquid.com/Jcrop/demos/demo_files/pool.jpg'>
+	</div>
+	
+
+</div>

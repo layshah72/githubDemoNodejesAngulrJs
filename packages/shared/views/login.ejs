@@ -1,0 +1,40 @@
+
+  {{  FBInit('377645159111615') }}
+
+  <form action="/login" method="post">
+    <div>
+        <label style="color:white;position:relative">Username:</label>
+        <input  type="text" name="username"/>
+    </div>
+    <div>
+        <label style="color:white;position:relative">Password:</label>
+        <input type="password" name="password"/>
+    </div>
+    <div>
+      <input type="submit" value="Log In" />
+           Or 
+      <script>
+        function checkLoginStatei() {
+          angular.element(document.getElementById('call')).scope().checkLoginState();         
+        }
+      </script>
+
+
+    
+      <div id="status">
+        <!--
+        Below we include the Login Button social plugin. This button uses
+        the JavaScript SDK to present a graphical Login button that triggers
+        the FB.login() function when clicked.
+        -->
+        <span id="call"></span>
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginStatei();">
+        </fb:login-button>
+      </div>
+      <div class="row">
+      No I daon't have account yet.
+      <input type="button" value="Sign Up" onclick="location.href='http://localhost:3000/#/signUp'"> </input>
+      </div> 
+    </div>  
+  </form>
+
